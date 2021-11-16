@@ -147,8 +147,6 @@ if [ $GVMVERSION = "20" ]; then
     sudo -Hiu gvm git clone https://github.com/greenbone/gvm-tools.git
 elif [ $GVMVERSION = "21" ]; then
     
-    exit 1
-    
     sudo -Hiu gvm git clone -b v21.4.3 https://github.com/greenbone/gvm-libs.git
     sudo -Hiu gvm git clone -b v21.4.0 https://github.com/greenbone/openvas-smb.git
     sudo -Hiu gvm git clone -b v21.4.3 https://github.com/greenbone/openvas.git
@@ -183,6 +181,11 @@ if [[ $ID = "debian" ]] || [[ $ID = "kali" ]]; then
     touch /root/.hushlogin
 fi
 
+# new version of gvm-libs appears to need /run/gvm available to read/write for gvm user; creating them here issue#61
+mkdir /run/gvm
+chown gvm:gvm /run/gvm
+
+
 # TODO should refactor this to write out a script for the gvm user to execute like the ones later in 
 # this script leaving .bashrc alone. I initially used .bashrc just because it was automatically
 # executed when switching to the gvm user.
@@ -198,6 +201,9 @@ sudo -Hiu gvm echo "cd build" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 sudo -Hiu gvm echo "cmake .. -DCMAKE_INSTALL_PREFIX=/opt/gvm" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 sudo -Hiu gvm echo "make" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 sudo -Hiu gvm echo "make install" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
+
+#debug 
+exit 1
 
 # Build and Install OpenVAS and OpenVAS SMB
 sudo -Hiu gvm echo "cd ../../openvas-smb/" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
