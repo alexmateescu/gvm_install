@@ -231,9 +231,6 @@ su gvm
 sudo -Hiu gvm rm /opt/gvm/.bashrc
 sudo -Hiu gvm mv /opt/gvm/.bashrc.bak /opt/gvm/.bashrc
 
-# debug, let's try it now up to here
-exit 1
-
 # Configuring OpenVAS
 ldconfig
 cp /tmp/gvm-source/openvas/config/redis-openvas.conf /etc/redis/
@@ -277,6 +274,9 @@ else
 fi
 
 echo "gvm ALL = NOPASSWD: /opt/gvm/sbin/gsad" >> /etc/sudoers.d/gvm
+
+#debug let's see if we're good up to here
+exit 1
 
 # Build and Install Greenbone Vulnerability Manager
 su gvm -c "touch /opt/gvm/gvm_build.sh"
