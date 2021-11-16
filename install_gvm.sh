@@ -185,6 +185,13 @@ fi
 mkdir /run/gvm
 chown gvm:gvm /run/gvm
 
+# more directory issues resolved here issue # 61
+mkdir /var/log/gvm
+chown gvm:gvm /var/log/gvm
+mkdir /etc/openvas
+chown gvm:gvm /etc/openvas
+mkdir /var/lib/openvas
+chown gvm:gvm /var/lib/openvas
 
 # TODO should refactor this to write out a script for the gvm user to execute like the ones later in 
 # this script leaving .bashrc alone. I initially used .bashrc just because it was automatically
@@ -201,9 +208,6 @@ sudo -Hiu gvm echo "cd build" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 sudo -Hiu gvm echo "cmake .. -DCMAKE_INSTALL_PREFIX=/opt/gvm" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 sudo -Hiu gvm echo "make" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 sudo -Hiu gvm echo "make install" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
-
-#debug 
-exit 1
 
 # Build and Install OpenVAS and OpenVAS SMB
 sudo -Hiu gvm echo "cd ../../openvas-smb/" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
@@ -226,6 +230,9 @@ sudo -Hiu gvm echo "exit" | sudo -Hiu gvm tee -a /opt/gvm/.bashrc
 su gvm
 sudo -Hiu gvm rm /opt/gvm/.bashrc
 sudo -Hiu gvm mv /opt/gvm/.bashrc.bak /opt/gvm/.bashrc
+
+# debug, let's try it now up to here
+exit 1
 
 # Configuring OpenVAS
 ldconfig
