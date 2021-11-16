@@ -193,6 +193,10 @@ chown gvm:gvm /etc/openvas
 mkdir /var/lib/openvas
 chown gvm:gvm /var/lib/openvas
 
+# workaround for installing gsa systemd service
+chgrp gvm /lib/systemd/service
+chmod g+w /lib/systemd/service
+
 # TODO should refactor this to write out a script for the gvm user to execute like the ones later in 
 # this script leaving .bashrc alone. I initially used .bashrc just because it was automatically
 # executed when switching to the gvm user.
@@ -310,6 +314,10 @@ sudo -Hiu gvm echo "make install" | sudo -Hiu gvm tee -a /opt/gvm/gsa_build.sh
 
 su gvm -c "/opt/gvm/gsa_build.sh"
 su gvm -c "rm /opt/gvm/gsa_build.sh"
+
+# put permissions back after gsa install workaround
+chmod g-w /lib/systemd/system
+chown root /lib/systemd/system
 
 #debug let's see if we're good up to here
 exit 1
