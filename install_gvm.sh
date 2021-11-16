@@ -146,6 +146,7 @@ if [ $GVMVERSION = "20" ]; then
     sudo -Hiu gvm git clone https://github.com/greenbone/python-gvm.git
     sudo -Hiu gvm git clone https://github.com/greenbone/gvm-tools.git
 elif [ $GVMVERSION = "21" ]; then
+    break
     #sudo -Hiu gvm git clone -b v21.4.3 https://github.com/greenbone/gvm-libs.git
     #sudo -Hiu gvm git clone -b v21.4.0 https://github.com/greenbone/openvas-smb.git
     #sudo -Hiu gvm git clone -b v21.4.3 https://github.com/greenbone/openvas.git
