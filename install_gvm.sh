@@ -275,9 +275,6 @@ fi
 
 echo "gvm ALL = NOPASSWD: /opt/gvm/sbin/gsad" >> /etc/sudoers.d/gvm
 
-#debug let's see if we're good up to here
-exit 1
-
 # Build and Install Greenbone Vulnerability Manager
 su gvm -c "touch /opt/gvm/gvm_build.sh"
 su gvm -c "chmod u+x /opt/gvm/gvm_build.sh"
@@ -313,6 +310,9 @@ sudo -Hiu gvm echo "make install" | sudo -Hiu gvm tee -a /opt/gvm/gsa_build.sh
 
 su gvm -c "/opt/gvm/gsa_build.sh"
 su gvm -c "rm /opt/gvm/gsa_build.sh"
+
+#debug let's see if we're good up to here
+exit 1
 
 # Set cron jobs to run once daily at random times
 su gvm -c "touch /opt/gvm/cron.sh"
