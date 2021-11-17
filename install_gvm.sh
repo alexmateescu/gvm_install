@@ -319,10 +319,13 @@ su gvm -c "rm /opt/gvm/gsa_build.sh"
 chmod g-w /lib/systemd/system
 chown root /lib/systemd/system
 
-#debug let's see if we're good up to here
-#exit 1
-
 # Set cron jobs to run once daily at random times
+
+# debug
+# some nonsense here I think. Just ran it and saw the following:
+# /opt/gvm/cron.sh: line 6: /opt/gvm/bin/gvm-manage-certs: No such file or directory
+
+
 su gvm -c "touch /opt/gvm/cron.sh"
 su gvm -c "chmod u+x /opt/gvm/cron.sh"
 
