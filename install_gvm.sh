@@ -325,6 +325,12 @@ chown root /lib/systemd/system
 # some nonsense here I think. Just ran it and saw the following:
 # /opt/gvm/cron.sh: line 6: /opt/gvm/bin/gvm-manage-certs: No such file or directory
 
+#there's some more trouble with the following (debug)
+#/var/lib/openvas/feed-update.lockSleeping for 5 minutes to let the DB finish the NVT update
+#bash: /opt/gvm/sbin/greenbone-feed-sync: No such file or directory
+#Sleeping for 5 minutes to let the DB finish the GVMD_DATA update
+
+
 
 su gvm -c "touch /opt/gvm/cron.sh"
 su gvm -c "chmod u+x /opt/gvm/cron.sh"
