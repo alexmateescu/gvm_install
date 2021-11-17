@@ -194,8 +194,8 @@ mkdir /var/lib/openvas
 chown gvm:gvm /var/lib/openvas
 
 # workaround for installing gsa systemd service
-chgrp gvm /lib/systemd/service
-chmod g+w /lib/systemd/service
+chgrp gvm /lib/systemd/system
+chmod g+w /lib/systemd/system
 
 # TODO should refactor this to write out a script for the gvm user to execute like the ones later in 
 # this script leaving .bashrc alone. I initially used .bashrc just because it was automatically
