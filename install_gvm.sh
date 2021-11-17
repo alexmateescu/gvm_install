@@ -320,7 +320,7 @@ chmod g-w /lib/systemd/system
 chown root /lib/systemd/system
 
 #debug let's see if we're good up to here
-exit 1
+#exit 1
 
 # Set cron jobs to run once daily at random times
 su gvm -c "touch /opt/gvm/cron.sh"
